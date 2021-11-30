@@ -1,12 +1,5 @@
 from nose.tools import assert_equal
-import Game.items
-import Game.exits
-import Game.inventory
-import Game.mobiles
-import Game.rooms
-import Game.map
-import Game.engine
-
+import Game
 
 def setup():
     test_inv = Game.inventory.Inventory()

@@ -110,9 +110,7 @@ class Engine:
                 "Press Y to quit, any other key to keep playing."
             )
 
-            confirmation = input("> ")
-
-            if confirmation.lower() == "y":
+            if input("> ").lower() == "y":
                 exit(1)
             else:
                 return False
@@ -192,7 +190,7 @@ class Engine:
     def use_words_lookup(self):
         self.use_words = ['use']
         for label, item in self.player.can_see().items():
-            if item.use_words != "":
+            if item.use_words:
                 for word in item.use_words:
                     self.use_words.append(word)
         return self.use_words

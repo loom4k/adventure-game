@@ -29,7 +29,7 @@ class Inventory:
 
     def has(self, label):
         self.label = label
-        return self.label in list(self.inv_list.keys())
+        return self.label in self.inv_list.keys()
 
     def describe(self, item):
         self.item = item
@@ -43,8 +43,7 @@ class Inventory:
     def list(self):
         """Lists the contents of the inventory."""
         if not self.inv_list:
-            print(colored("You are not carrying anything.", 'red'))
-            return
+            return print(colored("You are not carrying anything.", 'red'))
 
         print(
             colored(

@@ -3,7 +3,19 @@ import csv
 
 
 class Exit(items.Item):
-
+    REVERSAL_GUIDE = {
+        "north": "south",
+        "south": "north",
+        "east": "west",
+        "west": "east",
+        "up": "down",
+        "down": "up",
+        "n": "s",
+        "s": "n",
+        "e": "w",
+        "w": "e"
+    }
+    
     def __init__(self, config):
         super().__init__(config)
         self.player = None
@@ -28,8 +40,7 @@ class Exit(items.Item):
         self.direction = config['direction']
         self.destination = config['destination']
 
-        self.keywords.append(self.direction)
-        self.keywords.append(self.abbreviations[self.direction])
+        self.keywords.extend([self.direction, self.abbreviations[self.direction]])
         # sets up the exit-specific properties
 
     def shall_pass(self, player):
@@ -98,22 +109,8 @@ class Exit(items.Item):
 def reverse_direction(word):
     # if the string is a direction, returns its opposite
     # otherwise, returns the string
-    reversal_guide = dict({
-        "north": "south",
-        "south": "north",
-        "east": "west",
-        "west": "east",
-        "up": "down",
-        "down": "up",
-        "n": "s",
-        "s": "n",
-        "e": "w",
-        "w": "e"
-    })
 
-    if word in reversal_guide:
-        word = reversal_guide[word]
-    return word
+    return self.REVERSAL_GUIDE.get(word, word)
 
 
 def create_config_reverse(config):

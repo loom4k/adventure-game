@@ -1,13 +1,19 @@
 # IDE specifics
-.vs
-.idea
-.vscode
+.vs/
+.idea/
+.vscode/
 
 # Python Environment
-__pycache__
+__pycache__/
 *.pyc
-venv
+venv/
 
-# Build
-build
-dist
+# build
+dist/
+
+# project-specific
+build/
+data/*.pyc
+Game/*.pyc
+tests/*.pyc
+Game/__pycache__/
